@@ -29,4 +29,4 @@ models:
     description: "status details of the user"
     columns:
       - name: transaction_id
-        description: "transaction_id primary key"
+        description: "transaction_id primary key"         
