@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: claim_user
+    description: "details of the user"
+    columns:
+      - name: user_id
+        description: "user primary key"
+  
+  - name: claim_address
+    description: "address details of the user"
+    columns:
+      - name: user_id
+        description: "user primary key"
+  
+  - name: claim_insurance
+    description: "insurance details of the user"
+    columns:
+      - name: claim_id
+        description: "claim primary key"
+  
+  - name: claim_payment
+    description: "payment details of the user"
+    columns:
+      - name: claim_id
+        description: "claim primary key"
+
+  - name: claim_status
+    description: "status details of the user"
+    columns:
+      - name: transaction_id
+        description: "transaction_id primary key"
