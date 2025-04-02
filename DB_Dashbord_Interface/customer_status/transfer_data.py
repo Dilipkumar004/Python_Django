@@ -2,15 +2,15 @@ import psycopg2
 import os
 
 # Get environment variables for database connection
-SOURCE_DB_HOST = os.getenv("localhost")
-SOURCE_DB_USER = os.getenv("postgres")
-SOURCE_DB_PASSWORD = os.getenv("dks004")
-SOURCE_DB_NAME = os.getenv("postgres")
+SOURCE_DB_HOST = os.getenv("SOURCE_DB_HOST")
+SOURCE_DB_USER = os.getenv("SOURCE_DB_USER")
+SOURCE_DB_PASSWORD = os.getenv("SOURCE_DB_PASSWORD")
+SOURCE_DB_NAME = os.getenv("SOURCE_DB_NAME")
 
-TARGET_DB_HOST = os.getenv("localhost")
-TARGET_DB_USER = os.getenv("postgres")
-TARGET_DB_PASSWORD = os.getenv("dks004")
-TARGET_DB_NAME = os.getenv("DB_Dashbord")
+TARGET_DB_HOST = os.getenv("TARGET_DB_HOST")
+TARGET_DB_USER = os.getenv("TARGET_DB_USER")
+TARGET_DB_PASSWORD = os.getenv("TARGET_DB_PASSWORD")
+TARGET_DB_NAME = os.getenv("TARGET_DB_NAME")
 
 # Connect to source database
 source_conn = psycopg2.connect(
@@ -25,7 +25,7 @@ source_cursor = source_conn.cursor()
 source_cursor.execute("SELECT * FROM claim_table_count WHERE status='active';")
 records = source_cursor.fetchall()
 
-# Connect to target database
+#Connect to target database
 target_conn = psycopg2.connect(
     host=TARGET_DB_HOST,
     user=TARGET_DB_USER,
