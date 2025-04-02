@@ -1,5 +1,8 @@
 import psycopg2
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Get environment variables for database connection
 SOURCE_DB_HOST = os.getenv("SOURCE_DB_HOST")
@@ -22,10 +25,10 @@ source_conn = psycopg2.connect(
 source_cursor = source_conn.cursor()
 
 # Fetch data from the source database
-source_cursor.execute("SELECT * FROM claim_table_count WHERE status='active';")
+source_cursor.execute("SELECT * FROM public_public.claim_table_count;")
 records = source_cursor.fetchall()
 
-#Connect to target database
+# Connect to target database
 target_conn = psycopg2.connect(
     host=TARGET_DB_HOST,
     user=TARGET_DB_USER,
@@ -33,6 +36,10 @@ target_conn = psycopg2.connect(
     dbname=TARGET_DB_NAME
 )
 target_cursor = target_conn.cursor()
+
+# target_cursor.execute("SELECT * FROM public.claims;")
+# t1 = target_cursor.fetchall()
+# print(t1)
 
 # Insert data into the target table
 for record in records:
